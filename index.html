@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UniPrácticas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Uni<span>Prácticas</span></h1>
+      <p class="sub">Organiza las actividades de tu práctica profesional, anota tus avances y no pierdas ninguna fecha de entrega.</p>
+    </div>
+    <div class="hbtns">
+      <button class="ghost" id="theme" type="button">Cambiar tema</button>
+      <button class="ghost" id="demo" type="button">Cargar ejemplos</button>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Resumen">
+    <div class="stat"><b id="sTotal">0</b><small>Actividades</small></div>
+    <div class="stat"><b id="sSoon">0</b><small>Vencen en 7 días</small></div>
+    <div class="stat late"><b id="sLate">0</b><small>Vencidas</small></div>
+    <div class="stat"><b id="sPct">0%</b><small>Completado</small><div class="progress"><i id="sBar"></i></div></div>
+  </section>
+
+  <main class="grid">
+    <section class="panel form" aria-labelledby="fh">
+      <h2 id="fh">Nueva actividad</h2>
+      <form id="f" novalidate>
+        <label for="title">Nombre de la actividad</label>
+        <input id="title" maxlength="80" placeholder="Ej.: Informe de la semana 3" required>
+        <label for="due">Fecha de entrega</label>
+        <input id="due" type="date" required>
+        <label for="cat">Tipo</label>
+        <select id="cat">
+          <option>Entrega</option><option>Reunión con tutor</option><option>Tarea de práctica</option><option>Informe</option>
+        </select>
+        <label for="note">Nota (opcional)</label>
+        <textarea id="note" maxlength="200"></textarea>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn" type="submit">Guardar actividad</button>
+      </form>
+    </section>
+
+    <section aria-labelledby="lh">
+      <h2 id="lh" style="margin:0 0 10px;font-size:1.15rem">Mis actividades</h2>
+      <div class="bar" id="filters" role="group" aria-label="Filtrar por estado">
+        <button class="chip" data-f="todas" aria-pressed="true" type="button">Todas</button>
+        <button class="chip" data-f="pendiente" aria-pressed="false" type="button">Pendientes</button>
+        <button class="chip" data-f="progreso" aria-pressed="false" type="button">En progreso</button>
+        <button class="chip" data-f="hecha" aria-pressed="false" type="button">Hechas</button>
+      </div>
+      <ul class="list" id="list"></ul>
+    </section>
+  </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
